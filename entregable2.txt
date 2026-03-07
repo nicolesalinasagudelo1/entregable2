@@ -1,0 +1,4 @@
+Proyecto: Practica git
+Autor: Nicole Salinas Agudelo
+
+Primera versión del documento.
