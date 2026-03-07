@@ -2,3 +2,13 @@ Proyecto: Practica git
 Autor: Nicole Salinas Agudelo
 
 Primera versión del documento.
+
+Poema "Fragmento inspirador" de Giovanni Quessep
+
+Fragmento inicial:
+
+El río corre sin descanso,
+susurrando antiguos secretos,
+la tierra escucha y responde,
+y el cielo pinta reflejos.
+
