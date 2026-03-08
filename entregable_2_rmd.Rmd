@@ -20,11 +20,16 @@ El presente estudio analiza la serie de datos de **precipitación en Planeta Ric
 
 Más información en: - [IDEAM](https://www.ideam.gov.co/) - [Datos Abiertos Colombia](https://www.datos.gov.co/)
 
+
+
+
 ## Área de estudio.
 
 Planeta Rica se localiza en el departamento de Córdoba, en la región Caribe colombiana, dentro de la cuenca del río Sinú.
 
 ![**Planeta Rica Córdoba**](planetarica_c.jpg){width="271"}
+
+
 
 ## Metodología.
 
@@ -73,6 +78,9 @@ datos <- read_csv("datosprecmes.csv")
 
 ```
 
+
+
+
 ## Gráfico de serie temporal de precipitación
 
 ```{r cars}
@@ -83,6 +91,11 @@ ggplot(datos, aes(x = Fecha, y = Valor)) +
        x = "Fecha",
        y = "Precipitación (mm)")
 ```
+
+
+
+
+
 
 ## Tabla de resumen
 
@@ -112,6 +125,8 @@ kable(tabla_resumen, caption = "**Resumen anual de precipitación en Planeta Ric
 
 ```
 
+
+
 ## Mapa interactivo.
 
 ```{r, echo=FALSE}
@@ -122,5 +137,7 @@ leaflet() %>%
              popup = "Estación meteorológica - Planeta Rica")
 
 ```
+
+
 
 ## Bibliografia.
