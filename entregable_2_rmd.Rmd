@@ -1,11 +1,11 @@
 ---
-title: "Entregable 2"
+title: "Entregable reproducibilidad 2"
 subtitle: "Análisis de la precipitación y su relación con eventos de inundación en Planeta Rica (Córdoba, Colombia)"
 author: "Nicole Salinas Agudelo"
 date: "2026-02-16"
-output: "html_document"
-bibliography: "entregable2.bib"
-csl: "apa.csl"
+output: html_document
+bibliography: entregable2.bib
+csl: apa.csl
 ---
 
 ## Introducción.
