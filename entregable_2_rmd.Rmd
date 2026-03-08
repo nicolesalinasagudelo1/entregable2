@@ -4,6 +4,7 @@ subtitle: "Análisis de la precipitación y su relación con eventos de inundaci
 author: "Nicole Salinas Agudelo"
 date: "2026-02-16"
 output: html_document
+bibliography: references.bib
 ---
 
 ## Introducción.
