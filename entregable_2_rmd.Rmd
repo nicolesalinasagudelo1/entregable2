@@ -1,0 +1,92 @@
+---
+title: "Entregable 2"
+subtitle: "Análisis de la precipitación y su relación con eventos de inundación en Planeta Rica (Córdoba, Colombia)"
+author: "Nicole Salinas Agudelo"
+date: "2026-02-16"
+output: html_document
+---
+
+## Introducción.
+
+Las inundaciones constituyen uno de los fenómenos naturales más recurrentes en el departamento de **Córdoba (Colombia)**. En municipios como *Planeta Rica*, los eventos de lluvias intensas pueden generar saturación del suelo y acumulación superficial de agua.
+
+El presente estudio analiza la **precipitación mensual registrada en la estación meteorológica de Planeta Rica**, con el fin de identificar posibles anomalías asociadas a eventos de inundación.
+
+Más información en: - [IDEAM](https://www.ideam.gov.co/) - [Datos Abiertos Colombia](https://www.datos.gov.co/)
+
+## Área de estudio.
+
+Planeta Rica se localiza en el departamento de Córdoba, en la región Caribe colombiana, dentro de la cuenca del río Sinú.
+
+![**Planeta Rica Córdoba**](planetarica_c.jpg)
+
+## Metodología.
+
+Se utilizó una serie temporal mensual de precipitación almacenada en un archivo CSV denominado *precipitacion_planeta_rica.csv*.
+
+Las variables incluidas son:
+
+fecha
+
+precipitacion_mm \## Importación de datos.
+
+```{r setup, include= FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(lubridate)
+library(leaflet)
+datos <- read_csv("datosprecmes.csv")
+```
+
+## Gráfico de serie temporal de precipitación
+
+```{r cars}
+
+ggplot(datos, aes(x = Fecha, y = Valor)) +
+  geom_line() +
+  labs(title = "Serie temporal de precipitación mensual",
+       x = "Fecha",
+       y = "Precipitación (mm)")
+```
+
+## Tabla de resumen
+
+```{r pressure, echo=FALSE}
+
+tabla_resumen <- datos %>%
+  group_by(Año = year(as.Date(Fecha))) %>%
+  summarise(
+    Total_anual = sum(Valor, na.rm = TRUE),
+    precipitacion_max = max(Valor, na.rm = TRUE),
+    prec_mes_max = month(
+      as.Date(Fecha[which.max(Valor)]),
+      label = TRUE,
+      abbr = FALSE
+    ),
+    
+    precipitacio_min = min(Valor, na.rm = TRUE),
+    pres_mes_min = month(
+      as.Date(Fecha[which.min(Valor)]),
+      label = TRUE,
+      abbr = FALSE
+    )
+  )
+
+kable(tabla_resumen, caption = "**Resumen anual de precipitación en Planeta Rica**")
+
+
+```
+
+## Mapa interactivo.
+
+```{r pressure, echo=FALSE}
+leaflet() %>%
+  addTiles() %>%
+  setView(lng = -75.584, lat = 8.411, zoom = 9) %>%
+  addMarkers(lng = -75.584, lat = 8.411,
+             popup = "Estación meteorológica - Planeta Rica")
+
+```
