@@ -4,22 +4,19 @@ subtitle: "Análisis de la precipitación y su relación con eventos de inundaci
 author: "Nicole Salinas Agudelo"
 date: "2026-02-16"
 output: html_document
-bibliography: references.bib
+bibliography: "entregable2.bib"
+csl: "apa.csl"
 ---
 
 ## Introducción.
-<<<<<<< HEAD
 
-=======
-En las últimas décadas, la **Variabilidad Climática (VC)** y **el Cambio Climático (CC)** han alterado profundamente los patrones pluviométricos en Colombia, afectando de manera directa la gestión de los recursos hídricos, la seguridad alimentaria y la estabilidad socioeconómica de las regiones rurales. La precipitación en el territorio colombiano se caracteriza por una alta variabilidad espaciotemporal, influenciada tanto por la compleja topografía andina como por fenómenos macroclimáticos de gran escala, principalmente el fenómeno **El Niño Oscilación del Sur (ENOS).**
->>>>>>> c095a74 (Modificacion primer parrafo de la introduccion)
+En las últimas décadas, la **Variabilidad Climática (VC)** y **el Cambio Climático (CC)** han alterado profundamente los patrones pluviométricos en Colombia, afectando de manera directa la gestión de los recursos hídricos, la seguridad alimentaria y la estabilidad socioeconómica de las regiones rurales. La precipitación en el territorio colombiano se caracteriza por una alta variabilidad espaciotemporal, influenciada tanto por la compleja topografía andina como por fenómenos macroclimáticos de gran escala, principalmente el fenómeno **El Niño Oscilación del Sur (ENOS)**[@bohorquez-penuela2020].
 
-Para municipios con una base económica agraria como **Planeta Rica, Córdoba**, comprender estas fluctuaciones es un imperativo para la planificación territorial. La evidencia científica reciente indica que, aunque algunas cuencas presentan tendencias mixtas, se ha documentado un **aumento significativo en la intensidad de eventos extremos de lluvia**.Estos episodios de *"lluvia excesiva"* —definidos técnicamente como aquellos que superan el **percentil 80** de la distribución histórica— no son simplemente eventos meteorológicos, sino auténticos **choques negativos de productividad**. Se ha estimado que tales excesos pueden provocar una disminución de entre el **2.2% y el 3% en el empleo formal rural**, afectando tanto al sector agrícola como al no agrícola, al reducir la demanda de mano de obra y dañar infraestructuras clave.
+Para municipios con una base económica agraria como **Planeta Rica, Córdoba**, comprender estas fluctuaciones es un imperativo para la planificación territorial. La evidencia científica reciente indica que, aunque algunas cuencas presentan tendencias mixtas, se ha documentado un **aumento significativo en la intensidad de eventos extremos de lluvia**.Estos episodios de *"lluvia excesiva"* —definidos técnicamente como aquellos que superan el **percentil 80** de la distribución histórica— no son simplemente eventos meteorológicos, sino auténticos **choques negativos de productividad**. Se ha estimado que tales excesos pueden provocar una disminución de entre el **2.2% y el 3% en el empleo formal rural**, afectando tanto al sector agrícola como al no agrícola, al reducir la demanda de mano de obra y dañar infraestructuras clave.[@análisis2013b]
 
-En el departamento de *Córdoba*, este riesgo se ve exacerbado por la fase fría del ENOS, conocida como **La Niña**. Durante estos periodos, se han registrado incrementos en los caudales de los ríos de hasta un **60%**, lo que convierte a las inundaciones en el desastre socio-natural con mayor impacto histórico en la población. Además, la respuesta climática local a estas anomalías de temperatura en el Pacífico suele manifestarse con un **rezago de 2 a 3 meses**, lo que ofrece una ventana crítica para la alerta temprana y la mitigación de riesgos. No obstante, la magnitud de estos desastres no depende únicamente de la lluvia, sino de una suma **factores antrópicos** como la deforestación y la deficiente gestión del suelo, que aumentan la escorrentía y la vulnerabilidad de las comunidades.
+En el departamento de *Córdoba*, este riesgo se ve exacerbado por la fase fría del ENOS, conocida como **La Niña**. Durante estos periodos, se han registrado incrementos en los caudales de los ríos de hasta un **60%**, lo que convierte a las inundaciones en el desastre socio-natural con mayor impacto histórico en la población. Además, la respuesta climática local a estas anomalías de temperatura en el Pacífico suele manifestarse con un **rezago de 2 a 3 meses**, lo que ofrece una ventana crítica para la alerta temprana y la mitigación de riesgos[@ávila2019]. No obstante, la magnitud de estos desastres no depende únicamente de la lluvia, sino de una suma **factores antrópicos** como la deforestación y la deficiente gestión del suelo, que aumentan la escorrentía y la vulnerabilidad de las comunidades.
 
-El presente estudio analiza la serie de datos de **precipitación en Planeta Rica durante el periodo 2019-2026**. Ante la tendencia al aumento observada en la pluviosidad local, este trabajo busca documentar el comportamiento de la variable y proporcionar un marco técnico que facilite el diseño de estrategias de adaptación. El objetivo es fortalecer la resiliencia de los sistemas productivos frente a un escenario de mayor humedad, minimizando la pérdida de empleos y optimizando el uso de tecnologías de drenaje y riego para mitigar el impacto de los choques climáticos en la economía rural.
-
+El presente estudio analiza la serie de datos de **precipitación en Planeta Rica durante el periodo 2019-2026**. Ante la tendencia al aumento observada en la pluviosidad local, este trabajo busca documentar el comportamiento de la variable y proporcionar un marco técnico que facilite el diseño de estrategias de adaptación. El objetivo es fortalecer la resiliencia de los sistemas productivos frente a un escenario de mayor humedad, minimizando la pérdida de empleos y optimizando el uso de tecnologías de drenaje y riego para mitigar el impacto de los choques climáticos en la economía rural[@orozcob].
 
 Más información en: - [IDEAM](https://www.ideam.gov.co/) - [Datos Abiertos Colombia](https://www.datos.gov.co/)
 
@@ -48,6 +45,7 @@ library(knitr)
 library(lubridate)
 library(leaflet)
 datos <- read_csv("datosprecmes.csv")
+
 ```
 
 ## Gráfico de serie temporal de precipitación
@@ -91,7 +89,7 @@ kable(tabla_resumen, caption = "**Resumen anual de precipitación en Planeta Ric
 
 ## Mapa interactivo.
 
-```{r pressure, echo=FALSE}
+```{r, echo=FALSE}
 leaflet() %>%
   addTiles() %>%
   setView(lng = -75.584, lat = 8.411, zoom = 9) %>%
@@ -99,3 +97,8 @@ leaflet() %>%
              popup = "Estación meteorológica - Planeta Rica")
 
 ```
+
+## Bibliografia.
+
+::: {#refs}
+:::
