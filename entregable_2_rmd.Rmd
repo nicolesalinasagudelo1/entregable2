@@ -3,7 +3,7 @@ title: "Entregable 2"
 subtitle: "Análisis de la precipitación y su relación con eventos de inundación en Planeta Rica (Córdoba, Colombia)"
 author: "Nicole Salinas Agudelo"
 date: "2026-02-16"
-output: html_document
+output: "html_document"
 bibliography: "entregable2.bib"
 csl: "apa.csl"
 ---
@@ -24,17 +24,42 @@ Más información en: - [IDEAM](https://www.ideam.gov.co/) - [Datos Abiertos Col
 
 Planeta Rica se localiza en el departamento de Córdoba, en la región Caribe colombiana, dentro de la cuenca del río Sinú.
 
-![**Planeta Rica Córdoba**](planetarica_c.jpg)
+![**Planeta Rica Córdoba**](planetarica_c.jpg){width="271"}
 
 ## Metodología.
 
-Se utilizó una serie temporal mensual de precipitación almacenada en un archivo CSV denominado *precipitacion_planeta_rica.csv*.
+Para analizar los patrones de precipitación en Planeta Rica se utilizó una serie temporal mensual de precipitación, almacenada en un archivo CSV denominado precipitacion_planeta_rica.csv.
 
-Las variables incluidas son:
+**1.Datos**
 
-fecha
+El conjunto de datos incluye las siguientes variables:
 
-precipitacion_mm \## Importación de datos.
+fecha: fecha de registro de la precipitación (mes y año).
+
+precipitacion_mm: valor mensual de precipitación en milímetros.
+
+**2.Importación y preparación de datos**
+
+Los datos fueron importados y procesados en R, asegurando la correcta interpretación de las fechas y la conversión de los valores numéricos. Se realizaron las siguientes operaciones:
+
+*Lectura del archivo CSV*: usando la función read.csv() para cargar los datos en un dataframe.
+
+*Conversión de fechas*: Las fechas se transformaron al formato de tipo Date para facilitar la agregación mensual y anual.
+
+*Limpieza de datos*: Se identificaron y gestionaron valores faltantes (NA) y se revisó la consistencia de los registros.
+
+**3.Análisis exploratorio**
+
+Se calcularon estadísticas descriptivas para cada año y se identificaron los meses con valores máximos y mínimos de precipitación, con el fin de caracterizar la variabilidad temporal de la serie.
+
+*Resumen anual*: Suma total de precipitación poraño.
+
+
+*Máximos y mínimos mensuales*: Identificación de los meses con mayor y menor precipitación por año.
+
+**4.Herramientas y reproducibilidad**
+
+El análisis fue realizado en R mediante scripts reproducibles en R Markdown, con el uso de paquetes como dplyr para manipulación de datos y knitr::kable() para generar tablas resumidas. Esto permite que cualquier usuario pueda reproducir los resultados usando el mismo conjunto de datos.
 
 ```{r setup, include= FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -99,6 +124,3 @@ leaflet() %>%
 ```
 
 ## Bibliografia.
-
-::: {#refs}
-:::
